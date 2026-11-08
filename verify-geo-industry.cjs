@@ -1,0 +1,10 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');const ctx={window:{},console};vm.createContext(ctx);for(const f of ['data.js','map-data.js','geopolitics-data.js'])vm.runInContext(fs.readFileSync(f,'utf8'),ctx);
+vm.runInContext(`const G=window.V3_GEO,M=window.V3_MAP,D=window.V3_DATA,C=G.countries,buildings=Object.fromEntries(D.buildings.map(b=>[b.id,b])),states=Object.fromEntries(M.states.map(s=>[s.id,s]));const esc=x=>String(x??''),num=n=>String(n||0),label=k=>G.labels[k]||k,art=k=>'',sorted=o=>Object.entries(o).sort((a,b)=>b[1]-a[1]),table=(head,rows,sortValues)=>JSON.stringify({head,rows,sortValues});`,ctx);
+vm.runInContext(fs.readFileSync('geopolitics-panels.js','utf8'),ctx);const run=s=>vm.runInContext(s,ctx);
+assert.equal(run('industryAggregate(C.GBR,false).members.length'),1);assert(run('industryAggregate(C.GBR,true).members.includes("BIC")'));
+assert.equal(run('new Set(industryAggregate(C.GBR,true).members).size'),run('industryAggregate(C.GBR,true).members.length'));
+assert.equal(run('industryAggregate(C.GBR,false).buildings.building_coal_mine'),run('C.GBR.buildings.building_coal_mine'));
+assert.equal(run('industryAggregate(C.GBR,true).buildings.building_coal_mine'),run('industryCountries(C.GBR,true).reduce((n,c)=>n+(c.buildings.building_coal_mine||0),0)'));
+assert.equal(run('worldResourceTotal("resources","building_coal_mine")'),run('M.states.reduce((n,s)=>n+(s.resources.building_coal_mine||0),0)'));
+const army=run('militaryPanel(C.GBR)'),base=run('industryTables(C.GBR)');run('geoIndustryScope.resources=true;geoIndustryScope.buildings=true');assert.equal(run('militaryPanel(C.GBR)'),army);const combined=run('industryTables(C.GBR)');assert.notEqual(combined,base);assert(combined.includes('容量世界占比'));assert(combined.includes('未发现世界占比'));assert(combined.includes('data-industry-subjects="buildings"'));assert.equal(run('share(0,0)'),'—');
+console.log('PASS: recursive deduplicated subjects, direct/combined building totals, global whole-state capacity denominators, both scope controls, zero denominators and unchanged starting military.');

@@ -1,0 +1,9 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');const ctx={window:{}};vm.createContext(ctx);for(const f of ['data.js','map-data.js','compare-core.js'])vm.runInContext(fs.readFileSync(f,'utf8'),ctx);const V=ctx.window.VersionCompare,D=ctx.window.V3_DATA,M=ctx.window.V3_MAP;
+const b=D.buildings.find(b=>b.id==='building_food_industry'),ids=b.groups.map(g=>D.groups[g].methods[0]),a=V.calculate(D,ids);assert(a.valid);assert.equal(a.net,a.revenue-a.cost);
+const changed=structuredClone(D);changed.goods.sugar.price+=5;const c=V.calculate(changed,ids);assert.equal(c.cost-a.cost,(a.input.sugar||0)*5);
+const best=V.best(D,b);assert(best.valid&&best.net>=a.net);const group=b.groups.find(g=>D.groups[g].methods.includes('pm_patent_stills'));if(group){const fixed=V.best(D,b,{[group]:'pm_patent_stills'});assert(fixed.ids.includes('pm_patent_stills'))}
+const pm=V.calculate(D,['pm_pot_stills']);assert.equal(pm.output.groceries,-25);assert(!pm.valid);
+const old={states:[{id:'a',name:'A',population:100,arable:10,resources:{coal:20},hidden:{coal:5}},{id:'gone',name:'Gone',population:50}]},fresh={states:[{id:'a',name:'A',population:120,arable:10,resources:{coal:30},hidden:{coal:10}},{id:'new',name:'New',population:3}]};
+assert.equal(V.stateRows(old,fresh,'coal')[0].delta,10);assert.equal(V.stateRows(old,fresh,'coal',true)[0].delta,15);assert.equal(V.stateRows(old,fresh,'population').find(x=>x.id==='gone').kind,'移除');assert.equal(V.stateRows(old,fresh,'population').find(x=>x.id==='new').delta,3);assert(V.stateRows(M,M,'population').every(r=>r.delta===0));
+for(const building of D.buildings){const x=V.best(D,building);if(x){assert(x.valid);assert.equal(x.ids.length,building.groups.length)}}
+console.log('PASS: snapshot-specific prices, signed PM output, exhaustive valid building optimum, fixed PM optimum, discovered/hidden resources, added/removed states and identical snapshot population.');

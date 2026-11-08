@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>维多利亚3 · 法律百科</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="laws.css"></head>
+<script src="i18n.js"></script><body class="laws-page"><aside><a class="brand game-brand" href="index.html"><img src="assets/victoria3-logo.png" alt="Victoria 3"></a><h2>产业百科</h2><p id="version"></p><nav aria-label="百科导航"><a href="index.html">01　建筑与生产</a><a href="map.html">02　全州资源地图</a><a href="companies.html">03　公司百科</a><a href="cultures.html">04　文化人群百科</a><a href="geopolitics.html">05　地缘政治</a><a href="laws.html" class="active" aria-current="page">06　法律百科</a><a href="characters.html">07　人物百科</a><a href="military.html">08　军队百科</a></nav><div class="asidefoot">法律、修正案与机构<br>原版定义 · 1836 开局统计</div></aside>
+<main><header><div><div class="eyebrow">THE BOOK OF LAWS · 1836</div><h1>法律百科</h1></div><span class="law-catalog-count" id="catalog-count"></span></header>
+<p class="intro">按游戏法律分类查阅原版效果，预览修正案与机构投资，并比较各国开局法律。</p>
+<section class="law-toolbar panel"><label>查找法律<input id="law-search" placeholder="名称、效果、特殊法律…" type="search"></label><label>开局国家参照<select id="law-country"></select></label><label>法律范围<select id="law-kind"><option value="all">全部法律</option><option value="special">特殊法律与变体</option></select></label><span class="muted">点击法律查看档案；选择不会修改国家开局数据。</span></section>
+<section id="law-catalog" class="law-catalog" aria-label="法律分类"></section>
+<article id="law-detail" class="panel law-detail"></article>
+<section id="law-statistics" class="panel law-statistics"></section>
+<footer id="law-source"></footer></main>
+<script data-module="data.js" src="localized-data.js"></script><script data-module="geopolitics-data.js" src="localized-data.js"></script><script data-module="laws-data.js" src="localized-data.js"></script><script src="laws-core.js"></script><script src="laws.js"></script><script src="theme.js"></script><script src="branding.js"></script></body></html>

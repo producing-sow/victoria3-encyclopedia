@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+.music-tools/
+.*-preview.png
+*.tmp
+history-update.lock
+history/pending-backup/
+history/*/game-definitions.zip
+
+output/
+
+i18n-visible-pending.json
+
+assets/author-profile.png

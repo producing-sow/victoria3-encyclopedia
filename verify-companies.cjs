@@ -1,0 +1,35 @@
+const fs=require('fs'),vm=require('vm'),assert=require('assert');
+const elements=new Map();const el=s=>{if(!elements.has(s))elements.set(s,{value:'',innerHTML:'',textContent:'',addEventListener(){}});return elements.get(s)};
+const context={window:{},document:{querySelector:el,querySelectorAll:()=>[]},console};vm.createContext(context);
+for(const f of ['data.js','companies-data.js','companies.js'])vm.runInContext(fs.readFileSync(f,'utf8'),context);
+const run=s=>vm.runInContext(s,context),C=context.window.V3_COMPANIES;
+assert.equal(C.companies.length,231);assert.equal(new Set(C.companies.map(c=>c.id)).size,231);
+assert(C.companies.every(c=>c.icon&&fs.existsSync(c.icon)&&fs.existsSync(c.background)));
+run("document.querySelector('#company-search').value='开平'");assert.equal(run('results().length'),1);run('render()');
+assert(el('#company-detail').innerHTML.includes('+10%'));assert(el('#company-detail').innerHTML.includes('满足任意一项'));
+assert(el('#company-detail').innerHTML.includes('&gt;= 5'));assert(el('#company-detail').innerHTML.includes('北京'));
+assert(el('#company-detail').innerHTML.includes('河北'));
+run("document.querySelector('#company-search').value='';document.querySelector('#company-kind').value='generic'");assert.equal(run('results().length'),27);
+run("document.querySelector('#company-region').value='china'");assert.equal(run('results().length'),0);run('render()');assert(el('#company-detail').innerHTML.includes('没有匹配'));
+run("document.querySelector('#company-region').value='';document.querySelector('#company-kind').value='';document.querySelector('#company-search').value='科技扩散'");assert(run('results().length')>0);
+run("document.querySelector('#company-search').value='';document.querySelector('#company-building').value='building_coal_mine'");assert(run("results().every(c=>[...c.buildings,...c.extensions].includes('building_coal_mine'))"));
+for(const c of C.companies){context.requestedCompany=c;run('current=requestedCompany;detail()');assert(el('#company-detail').innerHTML.includes(c.id))}
+console.log('PASS: 231 company assets and detail views; exact Kaiping OR, >=5, +10% prosperity; 27 generic companies; combined region/type/industry filters; modifier search; empty results.');
+run("document.querySelector('#company-building').value='';activeIndustrySector='agriculture'");
+assert(run('results().length')>0);assert(run("results().every(c=>companyInSector(c,'agriculture'))"));
+run("document.querySelector('#company-building').value='building_wheat_farm'");
+assert(run('results().length')>0);assert(run("results().every(c=>[...c.buildings,...c.extensions].includes('building_wheat_farm'))"));
+assert.equal(run("industrySector('building_textile_mill')"),'light');
+run("document.querySelector('#company-building').value='';activeIndustrySector='light'");assert(run("results().some(c=>c.id==='company_misr')"));
+run("activeIndustrySector='agriculture'");assert(!run("results().some(c=>c.id==='company_kaiping_mining')"));
+run('renderIndustryRail()');assert(el('#industry-rail').innerHTML.includes('data-sector="agriculture"'));assert(el('#industry-rail').innerHTML.includes('data-industry="building_wheat_farm"'));assert(el('#industry-rail').innerHTML.includes('<img'));
+console.log('PASS: illustrated industry categories; agriculture and light industry matches; exact wheat-farm filtering; unrelated mining company exclusion.');
+for(const c of C.companies){for(const [key]of c.prosperity){const text=C.labels[key]||key;assert(!/\[|\]|GetInterestGroup|concept_|\$/.test(text),`${c.id}: ${text}`)}for(const k of c.prestige){assert(C.prestigeGoods[k]?.icon,k);assert(fs.existsSync(C.prestigeGoods[k].icon))}}
+const yasuda=C.companies.find(c=>c.id==='company_yasuda');assert(yasuda);context.requestedCompany=yasuda;run('current=requestedCompany;detail()');
+assert(el('#company-detail').innerHTML.includes('实业家'));assert(el('#company-detail').innerHTML.includes('政治力量'));assert(el('#company-detail').innerHTML.includes('map.html?state=STATE_KANTO'));assert(el('#company-detail').innerHTML.includes('prestige-good'));
+assert(C.labels.state_infrastructure_from_population_add.includes('100000'));
+console.log('PASS: no unparsed expressions across all company prosperity names; all referenced prestige icons exist; Yasuda Chinese political strength; Kanto map deep link; define expansion.');
+run("activeIndustrySector='';document.querySelector('#company-building').value='';document.querySelector('#company-prestige').value='yes';document.querySelector('#company-kind').value='historical'");
+const prestigeHistorical=run('results()');assert(prestigeHistorical.length>0);assert(prestigeHistorical.every(c=>c.historical&&c.prestige.length>0));
+run("document.querySelector('#company-prestige').value='no'");const noGoods=run('results()');assert(noGoods.every(c=>c.historical&&c.prestige.length===0));assert.equal(prestigeHistorical.length+noGoods.length,C.companies.filter(c=>c.historical).length);
+console.log(`PASS: historical AND prestige goods intersection (${prestigeHistorical.length} with goods, ${noGoods.length} without goods).`);

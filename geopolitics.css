@@ -1,0 +1,85 @@
+.geo-page .map-viewport{height:clamp(360px,54vh,700px)}.country-shape{stroke:#465449;stroke-width:.7;vector-effect:non-scaling-stroke;fill-opacity:.7;cursor:pointer}.country-shape:hover,.country-shape.selected{stroke:#fff3a2;stroke-width:2.5;fill-opacity:.92}.country-shape.dimmed{fill-opacity:.12}.geo-page .map-filters{align-items:center}.geo-page .map-filters label{flex:1 1 220px}.geo-page #country-count{flex:0 0 auto}.geo-page #geo-legend{padding:10px 0}.geo-summary{margin:20px 0}.geo-summary h2{font-size:30px}.geo-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0}.geo-tabs a{border:1px solid var(--line);padding:7px 12px;text-decoration:none;border-radius:4px;background:#fffdf8}.geo-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.geo-section{margin:18px 0;scroll-margin-top:18px;min-width:0}.geo-section h3{margin-top:0}.geo-section .tablewrap{max-height:540px;overflow:auto}.geo-section th{position:sticky;top:0;z-index:1}.geo-section td:first-child{white-space:normal}.geo-section td.num{white-space:nowrap}.geo-section .culture-line{max-width:100%}.geo-tree{list-style:none;border-left:2px solid #d8d4be;margin:8px 0 8px 8px;padding-left:18px}.geo-tree li{margin:8px 0}.country-link{padding:3px 7px;color:var(--green);background:#f4f4e9}.geo-method{margin-top:24px;font-size:12px;color:#74796d}.geo-section details{margin:12px 0}.geo-section summary{cursor:pointer}.geo-page .metrics{grid-template-columns:repeat(4,1fr)}@media(max-width:1000px){.geo-grid{grid-template-columns:1fr}.geo-page .metrics{grid-template-columns:1fr 1fr}}@media(max-width:520px){.geo-page .panel{padding:14px}.geo-page .map-viewport{height:350px}.geo-tabs a{font-size:12px}.geo-page header{align-items:start;gap:8px}}
+.geo-tabs a{color:var(--green);font-size:13px}.geo-tabs a:hover{background:#e7ebdf;color:var(--green)}
+.geo-icon{width:30px;height:30px;object-fit:contain;flex-shrink:0;vertical-align:middle}.population-name{display:inline-flex;gap:7px;align-items:center}.population-name .geo-icon{width:23px;height:23px}.culture-symbol{display:inline-grid;place-items:center;width:23px;height:23px;background:#e7ebdf;border-radius:50%;color:var(--green)}.population-law{margin:10px 0 18px}.geo-law-card{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:5px;background:#f5f4eb;margin-bottom:9px;min-width:0}.geo-law-card .geo-icon{width:42px;height:42px}.geo-law-card small,.geo-law-card strong,.law-origin{display:block}.geo-law-card small{color:#777e70;font-size:11px}.geo-law-card strong{font-size:14px;font-weight:500}.law-origin{font-size:10px;color:#93876a}.law-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}.law-columns h4{border-bottom:2px solid #cdbb85;padding-bottom:10px}.industry-columns{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr);gap:20px}.industry-columns .tablewrap{max-height:600px}.industry-columns table{font-size:12px}.industry-columns th,.industry-columns td{padding:9px 6px}.industry-columns th{white-space:nowrap}.geo-building-link{display:inline-flex;align-items:center;gap:5px;min-width:90px}.geo-building-link .game-art{width:28px;height:28px;margin:0}.country-badge{width:30px;height:23px;background:#e3e8db;border:1px solid #c8ccb9;border-radius:3px;vertical-align:middle;margin-right:6px;padding:2px}.country-link{display:inline-flex;align-items:center;gap:4px}.relation-icon,.unit-icon{color:#957538;font-size:17px}.relation-map-wrap{margin-top:24px;border-top:1px solid var(--line)}#relation-mini-map{display:block;width:100%;height:310px;background:#c9d3c8;border:1px solid var(--line);border-radius:5px}#relation-mini-map path{cursor:pointer}#relation-mini-map path:hover,#relation-mini-map path:focus{stroke:#fff3aa;stroke-width:2;outline:none}.geo-section .culture-caption{align-items:center}@media(max-width:1300px){.industry-columns{grid-template-columns:1fr}.industry-columns .tablewrap{max-height:420px}}@media(max-width:800px){.law-columns{grid-template-columns:1fr}.geo-law-card .geo-icon{width:36px;height:36px}.culture-caption{flex-wrap:wrap}#relation-mini-map{height:240px}}
+.geo-sortable-table .sort-header{display:block;width:100%;text-align:right;font-size:inherit}
+.geo-sortable-table th[aria-sort="ascending"],.geo-sortable-table th[aria-sort="descending"]{background:#e4e9dd;color:var(--green)}
+/* Keep the relationship cards and interactive map side by side. */
+.relations-layout{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:start}
+.relations-info,.relation-blocs,.relation-subjects{min-width:0}
+.relations-info h4{margin:0 0 12px}.relation-blocs article>h4{color:var(--green)}
+.relation-subjects{border-top:1px solid var(--line);margin-top:22px;padding-top:20px}
+.relation-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.relations-info .country-link{max-width:100%;font-size:13px;text-align:left}.relations-info .country-link small{white-space:nowrap}.relations-info .country-badge{flex-shrink:0}
+.relation-root{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.relations-info summary{font-size:13px;color:var(--green);padding:7px 0}.relations-info summary:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.relations-info .geo-tree{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;list-style:none;border:0;margin:10px 0 0;padding:0}
+.relations-info .geo-tree>li{margin:0;max-width:100%;min-width:0;border:1px solid var(--line);border-radius:5px;background:#f7f6ee;padding:7px}
+.relation-node-heading{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.relation-node-heading>.muted{white-space:nowrap;font-size:11px}
+.relations-info .relation-branch{margin:6px 0 0}.relations-info .relation-branch .relation-branch{padding-left:10px;border-left:2px solid #d8d4be}
+.relation-node:has(>.relation-branch[open]){flex-basis:100%}
+.relation-tree-actions{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}.relation-tree-actions button{font-size:11px;padding:4px 8px}
+.relations-layout .relation-map-wrap{position:sticky;top:18px;min-width:0;margin:0;padding:0;border:0}
+.relation-map-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.relation-map-heading h4{margin:0}
+.relation-map-viewport{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:6px;background:#c9d3c8}
+.relations-layout #relation-mini-map{height:clamp(340px,48vh,580px);border:0;border-radius:0;touch-action:none;user-select:none;cursor:grab}
+.relations-layout #relation-mini-map.dragging,.relations-layout #relation-mini-map.dragging path{cursor:grabbing}
+#relation-mini-map:focus-visible{outline:2px solid var(--green);outline-offset:-3px}
+.relation-map-viewport .map-tools{top:10px;left:10px;right:10px;flex-wrap:wrap}.relation-map-viewport .map-tools button{font-size:12px;padding:5px 9px}
+.relation-map-wrap>p{line-height:1.8;margin:10px 0 0}
+@media(max-width:1100px){.relations-layout{gap:18px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(max-width:850px){.relations-layout{grid-template-columns:1fr}.relations-layout .relation-map-wrap{position:static}.relations-layout #relation-mini-map{height:340px}}
+/* Compact summaries beside named formations. */
+.industry-columns{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)}.military-section{grid-column:1/-1;border-top:1px solid var(--line);padding-top:16px}.military-layout{display:grid;grid-template-columns:minmax(260px,.75fr) minmax(0,2fr);gap:24px}.military-summary{min-width:0}.formation-details{min-width:0}.formation-details>h4:first-child{margin-top:0}.formation-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.formation-card{border:1px solid var(--line);border-radius:5px;padding:12px;background:#f7f6ee;min-width:0}.formation-card header{align-items:start;gap:12px}.formation-card h5{font-size:14px;font-weight:500;margin:0}.formation-card header>strong{font-size:13px;white-space:nowrap;color:var(--green)}.formation-card>.muted{margin:6px 0}.military-unit{display:inline-flex;align-items:center;gap:7px;text-align:left}.military-unit .geo-icon{width:36px;height:30px}.formation-card .tablewrap{max-height:280px}.method-chip{display:inline-flex;align-items:center;gap:5px;margin:3px 0 3px 9px;text-align:left}.method-chip .geo-icon{width:28px;height:28px}.principle-slots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:10px 0 18px}.principle-card{display:flex;align-items:start;gap:12px;background:#f4f3e8;border:1px solid #d6c99f;border-radius:5px;padding:12px}.principle-card>div:last-child{flex:1;min-width:0}.principle-art{position:relative;width:64px;height:72px;flex-shrink:0;background-size:contain;background-repeat:no-repeat;background-position:center}.principle-art .geo-icon{width:52px;height:52px;margin:2px 6px}.principle-art>span{position:absolute;bottom:0;left:0;right:0;text-align:center;color:#8c6926;font:bold 17px Georgia}.principle-card p{margin:6px 0;font-size:12px}.principle-effect{display:flex;justify-content:space-between;gap:12px}.principle-effect strong{white-space:nowrap;color:var(--green)}@media(max-width:1300px){.industry-columns{grid-template-columns:1fr}.formation-grid{grid-template-columns:1fr}}@media(max-width:800px){.military-layout{grid-template-columns:1fr}.principle-slots{grid-template-columns:1fr}.formation-card{padding:10px}}
+.formation-details{max-height:780px;overflow:auto;padding-right:8px;scrollbar-gutter:stable}.formation-card td,.formation-card th{padding:7px 6px}.military-summary .tablewrap{max-height:380px}@media(max-width:800px){.formation-details{max-height:680px}}
+/* Opening laws: amendments and institution investment alongside each law. */
+.law-identity{display:flex;align-items:center;gap:12px;min-width:0}
+.law-card-detailed{display:grid;grid-template-columns:minmax(125px,1fr) minmax(0,1.3fr);gap:14px;min-height:92px;align-items:center}
+.law-extra{display:flex;align-items:start;gap:12px;min-width:0;border-left:1px solid var(--line);padding-left:14px}
+.law-amendments{flex:1 1 0;min-width:0}
+.law-empty{font-size:11px;color:#96998d}
+.geo-section .law-amendment{margin:3px 0;font-size:12px;overflow-wrap:anywhere}
+.law-amendment summary{color:var(--green);line-height:1.6}
+.law-amendment summary:focus-visible{outline:2px solid #9d8248;outline-offset:3px}
+.law-amendment-body{font-size:11px;color:#6c7467;line-height:1.65}
+.law-amendment-body p{margin:6px 0}
+.law-institution{flex:0 1 100px;min-width:0}
+.institution-value,.institution-name{display:block}
+.institution-value{font-size:12px;color:var(--green);white-space:nowrap;line-height:1.5}
+.institution-value b{font:22px Georgia,serif}
+.institution-value.is-unknown{font-size:11px;color:#96998d}
+.institution-name{font-size:10px;color:#777e70}
+@media(min-width:801px) and (max-width:1600px){.law-card-detailed{grid-template-columns:1fr;gap:8px}.law-extra{border-left:0;border-top:1px solid var(--line);padding:7px 0 0}.law-institution{margin-left:auto}}
+@media(max-width:440px){.law-card-detailed{grid-template-columns:1fr;gap:8px}.law-extra{border-left:0;border-top:1px solid var(--line);padding:7px 0 0}}
+.geo-map-profile{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,27%);gap:18px;align-items:stretch}.geo-map-profile .map-viewport{height:clamp(430px,65vh,780px)}.country-profile{height:clamp(430px,65vh,780px);overflow:auto;padding:20px;min-width:0}.profile-date{font-size:12px;color:#907c4e;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:14px}.profile-title{gap:12px;justify-content:start}.profile-title h2{font-size:24px}.profile-title>div>span{font-size:12px;color:#998253}.profile-flag{width:88px;height:59px;border:1px solid #b9ac87;box-shadow:0 1px 4px #0002;flex-shrink:0}.profile-country-emblem .country-badge{width:76px;height:55px}.profile-forces{display:flex;gap:24px;padding:16px 0;border-bottom:1px solid var(--line);font-size:23px}.profile-forces a{text-decoration:none}.profile-forces small{font-size:12px}.profile-facts{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px;margin:18px 0}.profile-facts dt{font-size:12px;color:#8d7855;margin-bottom:4px}.profile-facts dd{margin:0;font-size:15px}.profile-origin{display:block;font-size:10px;color:#929281}.profile-inline-link{display:inline-flex;align-items:center;gap:5px}.profile-inline-link .geo-icon{width:23px;height:23px}.profile-runtime{font-size:11px;color:#8b8d80;background:#f1f0e6;padding:9px;border-radius:4px}.country-introduction{border-top:1px solid var(--line);padding-top:6px}.country-introduction h3{margin:12px 0 6px}.country-introduction p{font-size:13px;line-height:1.9;margin:6px 0}.country-introduction small{font-size:10px}@media(min-width:2300px){.country-profile{padding:24px}.country-introduction p{font-size:15px}.profile-facts dd{font-size:18px}}@media(max-width:1050px){.geo-map-profile{grid-template-columns:1fr}.country-profile{height:auto;max-height:none}.geo-map-profile .map-viewport{height:450px}.profile-facts{grid-template-columns:repeat(3,1fr)}}@media(max-width:520px){.profile-facts{grid-template-columns:1fr 1fr}.geo-map-profile .map-viewport{height:350px}}
+/* Population composition: interactive pie charts and matching detail colors. */
+#geo-population .geo-grid>div{min-width:0}
+.population-chart{margin:0 0 20px;padding:16px;background:#f7f6ef;border:1px solid var(--line);border-radius:6px}
+.population-chart figcaption{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:12px;color:#797e70}
+.population-chart figcaption strong{font-weight:500;color:var(--ink)}
+.population-chart-body{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:16px;margin:12px 0}
+.population-pie{display:block;width:210px;max-width:100%;flex:0 1 210px;overflow:visible}
+.population-sector{cursor:pointer;stroke:#fffdf8;stroke-width:.6;transition:filter .15s}
+.population-sector:hover,.population-sector.is-active{filter:brightness(1.12);stroke:#354d40;stroke-width:1.5}
+.population-sector:focus-visible{outline:none;stroke:#263d30;stroke-width:3}
+.population-legend{flex:1 1 180px;min-width:0;display:grid;gap:3px}
+.population-legend button{display:grid;grid-template-columns:10px minmax(0,1fr) auto;align-items:center;gap:8px;width:100%;padding:6px 8px;background:transparent;border:1px solid transparent;text-align:left;font-size:12px;color:var(--ink)}
+.population-legend button:hover,.population-legend button.is-active{background:#e9ede2;border-color:#d3dac9}
+.population-legend button:focus-visible{outline:2px solid #537c63;outline-offset:1px}
+.population-legend b{font-weight:500;font-variant-numeric:tabular-nums;color:#61705e;white-space:nowrap}
+.population-swatch{display:inline-block;width:10px;height:10px;border-radius:2px}
+.population-readout{margin:0;padding:9px 0;border-top:1px solid var(--line);font-size:13px;color:var(--green);font-variant-numeric:tabular-nums;min-height:36px}
+.population-chart-help{font-size:10px;color:#878d7e;margin:0;line-height:1.6}
+.population-breakdown .culture-caption>span:last-child{font-variant-numeric:tabular-nums;white-space:nowrap}
+@media(max-width:520px){.population-chart{padding:12px}.population-chart-body{gap:8px}.population-pie{width:190px;flex-basis:190px}.population-readout{font-size:12px}}
+.geo-map-profile>*,.industry-columns>*,.geo-grid>*{min-width:0}.geo-section .tablewrap{max-width:100%}
+
+#geo-industry-stats{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:22px;min-width:0}#geo-industry-stats>div{min-width:0}#geo-industry-stats .tablewrap{max-height:620px;overflow:auto}#geo-industry-stats th{white-space:nowrap}@media(max-width:1100px){#geo-industry-stats{grid-template-columns:minmax(0,1fr)}}
+
+.conditional-principle{border-top:1px dashed #cdbb85;margin-top:12px;padding-top:10px}.principle-condition{display:inline-block;margin:0 0 4px;padding:4px 8px;border-radius:4px;background:#eee6d2;color:#7a6333;font-size:12px}.conditional-principle .principle-slots{margin-top:6px}
+
+/* Keep the scope checkbox and caption together beside each table title. */
+.geo-industry-heading{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:8px 16px;margin:0 0 8px}
+.geo-industry-heading h4{margin:0}
+.geo-industry-heading .geo-subject-option{display:inline-flex;align-items:center;justify-content:flex-start;gap:6px;width:auto;flex:0 0 auto;margin:0;padding:3px 0;font-size:12px;line-height:1.5;color:#526a4b;cursor:pointer;white-space:nowrap}
+.geo-industry-heading .geo-subject-option input[type="checkbox"]{appearance:auto;display:inline-block;width:14px;min-width:14px;max-width:14px;height:14px;margin:0;padding:0;flex:0 0 14px;accent-color:var(--green);cursor:pointer}
+.geo-industry-caption{margin:0 0 12px}
