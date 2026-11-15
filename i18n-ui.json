@@ -7882,5 +7882,10 @@
   "继承人": "Heir",
   "鼓动者": "Agitator",
   "陆军将领": "General",
-  "海军将领": "Admiral"
+  "海军将领": "Admiral",
+  "真实资源 MOD": "Real Resources MOD",
+  "切换资源数据版本": "Switch resource dataset",
+  "资源数据版本": "Resource dataset",
+  "数据版本": "Dataset version",
+  "原版 · 未加载 MOD 修改": "Base game · No MOD overrides"
 }

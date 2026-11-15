@@ -12,3 +12,14 @@ output/
 i18n-visible-pending.json
 
 assets/author-profile.png
+
+updater-settings.json
+updater-source.json
+
+.v3-update-*/
+.v3-rollback-*/
+
+# Local production files and regenerated machine-specific cache
+.video-tools/
+video-intro/
+industrial-chain-source.json

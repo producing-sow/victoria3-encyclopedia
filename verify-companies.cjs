@@ -1,7 +1,7 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const elements=new Map();const el=s=>{if(!elements.has(s))elements.set(s,{value:'',innerHTML:'',textContent:'',addEventListener(){}});return elements.get(s)};
 const context={window:{},document:{querySelector:el,querySelectorAll:()=>[]},console};vm.createContext(context);
-for(const f of ['data.js','companies-data.js','companies.js'])vm.runInContext(fs.readFileSync(f,'utf8'),context);
+for(const f of ['data.js','companies-data.js','companies-sources.js','companies.js'])vm.runInContext(fs.readFileSync(f,'utf8'),context);
 const run=s=>vm.runInContext(s,context),C=context.window.V3_COMPANIES;
 assert.equal(C.companies.length,231);assert.equal(new Set(C.companies.map(c=>c.id)).size,231);
 assert(C.companies.every(c=>c.icon&&fs.existsSync(c.icon)&&fs.existsSync(c.background)));

@@ -2,8 +2,9 @@
 const entries=window.V3_HISTORY||[],esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const host=document.getElementById('version-dashboard');
 if(!host)return;
+host.hidden=window.V3?.dataset==='industrial-chain';
 const latest=entries.at(-1),diff=latest?.changes||[];
-host.innerHTML=`<div class="history-heading"><div><small>LOCAL VERSION ARCHIVE</small><h2>版本变化看板</h2></div><div><a href="compare.html?module=buildings">建筑与生产对比 ↗</a>　<a href="compare.html?module=resources">资源与人口对比 ↗</a>　<a href="history.html">字段档案 ↗</a></div></div><p>${latest?`${esc(latest.version)} · ${esc(latest.captured.replace('T',' '))} · 已保存 ${entries.length} 份快照`:'暂无快照，请运行“更新数据”。'}</p><div class="history-stats"><span>新增 <b>${diff.filter(x=>x.kind==='新增').length}</b></span><span>修改 <b>${diff.filter(x=>x.kind==='修改').length}</b></span><span>移除 <b>${diff.filter(x=>x.kind==='移除').length}</b></span></div><p class="muted">${entries.length<2?'当前为起始基线；以后检测到游戏变化，将保留旧数据并生成差异。':'变化相对于上一份快照；同版本的文件变化也会记录。'} 通过“打开百科.cmd”启动会检查游戏数据；直接打开网页使用最近的本地数据。</p>`;
+host.innerHTML=`<div class="history-heading"><div><small>LOCAL VERSION ARCHIVE</small><h2>版本变化看板</h2></div><div><a href="compare.html?module=buildings">建筑与生产对比 ↗</a>　<a href="compare.html?module=resources">资源与人口对比 ↗</a>　<a href="history.html">字段档案 ↗</a></div></div><p>${latest?`${esc(latest.version)} · ${esc(latest.captured.replace('T',' '))} · 已保存 ${entries.length} 份快照`:'暂无快照，请运行“更新数据”。'}</p><div class="history-stats"><span>新增 <b>${diff.filter(x=>x.kind==='新增').length}</b></span><span>修改 <b>${diff.filter(x=>x.kind==='修改').length}</b></span><span>移除 <b>${diff.filter(x=>x.kind==='移除').length}</b></span></div><p class="muted">${entries.length<2?'当前为起始基线；以后检测到游戏变化，将保留旧数据并生成差异。':'变化相对于上一份快照；同版本的文件变化也会记录。'} 通过“打开百科.cmd”启动后，可在侧栏“更新百科”中更新；直接打开网页使用最近的本地数据。</p>`;
 if(!document.getElementById('history-comparison'))return;
 const label=e=>`${e.version} · ${e.captured.replace('T',' ')}${e.baseline?'（原有数据基线）':''}`;
 const options=entries.map(e=>`<option value="${esc(e.id)}">${esc(label(e))}</option>`).join('');

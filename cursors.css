@@ -1,0 +1,12 @@
+/* Original Victoria 3 cursors, native 32px size and (0,0) hotspot. */
+:root{
+ --v3-cursor-default:url("assets/cursors/standard.cur"),url("assets/cursors/standard.png") 0 0,default;
+ --v3-cursor-link:url("assets/cursors/hover_tooltip.cur"),url("assets/cursors/hover_tooltip.png") 0 0,pointer;
+ cursor:var(--v3-cursor-default);
+}
+body{cursor:var(--v3-cursor-default)}
+:where(a[href],button,select,summary,label[for],[role="button"],input[type="checkbox"],input[type="radio"],input[type="button"],input[type="submit"],input[type="reset"]){cursor:var(--v3-cursor-link)}
+:where(a[href],button,summary,[role="button"]) :where(img,span,strong,small,i,svg,path){cursor:inherit}
+/* Keep native editing and unavailable-control feedback. */
+textarea,input:is(:not([type]),[type="text"],[type="search"],[type="email"],[type="url"],[type="tel"],[type="password"],[type="number"]),[contenteditable="true"]{cursor:text}
+button:disabled,input:disabled,select:disabled,textarea:disabled,[role="button"][aria-disabled="true"]{cursor:not-allowed}

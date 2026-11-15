@@ -1,5 +1,7 @@
 # Victoria 3 Encyclopedia
 
+Latest release: [v2026.11.15 · Downloads & release notes](https://github.com/producing-sow/victoria3-encyclopedia/releases/tag/v2026.11.15) · [Changelog](CHANGELOG.md)
+
 [简体中文](README.md) | **English**
 
 An interactive encyclopedia built from Victoria 3 game files, bringing together production, resources, companies, cultures, religions, geopolitics, laws, characters, and military units. Explore the game through Chinese and English interfaces, offline browsing, combined filters, and visual statistics.
@@ -56,16 +58,36 @@ On Windows, run `更新数据.cmd` to force an update, or use `python version_hi
 
 ## Data scope
 
-The current content is based on locally extracted **Victoria 3 1.15.0 (Ivan-Chai)** data. Refer to the version shown in the interface and snapshot records for the exact dataset in use.
+The current content is based on locally extracted **Victoria 3 1.15.1 (Ivan-Chai)** data. Refer to the version shown in the interface and snapshot records for the exact dataset in use.
 
 - Starting statistics are based on static 1836 definitions, not a live save. Some runtime scripts, events, and conditions are not evaluated; inferred defaults and conditional records are identified in the interface.
 - Theoretical net output value uses base goods prices and excludes wages, taxes, and other costs. It is not actual profit or a prediction of the best production setup in a live market.
 - Law, institution, and amendment previews compare defined effects without simulating every enactment requirement or save-specific modifier.
 - Character counts represent fixed templates and creation records. One historical person may have multiple templates; generators without fixed names are excluded.
-- Version comparisons cover only snapshots already saved. The current extraction pipeline does not merge mod data.
+- Version comparisons cover saved base-game snapshots only. Buildings & Production also offers a separate Chains of Industry dataset, kept outside base-game snapshots.
 
 ## Feedback
+
+See [MOD Sources & Credits](MOD_CREDITS.md) for original authors, Chinese localization authors, and translation contributors. Relevant modules also link to the original Workshop pages.
 
 Issues reporting data errors, translation problems, and feature suggestions are welcome. Please include the game version, page, entry name or ID, and screenshots or reproduction steps when possible.
 
 Created by **Alice Junior**. This is an unofficial, fan-made encyclopedia. The Victoria 3 name, icons, and game assets belong to their respective rights holders.
+
+
+### One-click local updates
+
+Run `打开百科.cmd` or `更新数据.cmd`, open **Update encyclopedia**, enter the Victoria 3 installation folder (containing `game` and `launcher`), and click **Update entire encyclopedia**. Keep the service window open. Requires Python 3.10+, Pillow and NumPy (`python -m pip install Pillow numpy`).
+
+All eight vanilla modules, icons and both languages are rebuilt. Only vanilla file-content changes create a new snapshot, including same-version hotfixes; repeated updates and timestamp changes do not. Previous snapshots remain available in Version Archive, and failed builds preserve existing data. MOD catalogs are maintained separately and excluded from vanilla snapshots. Direct changes to installed game files still count as differences; Steam file verification restores vanilla files. Static/GitHub pages require the local launcher to perform updates.
+
+CLI: `python version_history.py --root "D:\SteamLibrary\steamapps\common\Victoria 3" --force`. Force rebuilds without forcing duplicate snapshots. The selected path is stored locally and ignored by Git.
+
+
+### In-page launcher and MOD updates
+
+Run either local CMD launcher once to register `v3encyclopedia://update` for your Windows user. Afterwards, click **Launch local updater** inside the encyclopedia and accept the browser prompt. Re-run the CMD after moving the folder. Registration does not require administrator rights; remove `HKEY_CURRENT_USER\Software\Classes\v3encyclopedia` to unregister.
+
+Choose vanilla only, selected MODs only, or both. Auto-detection searches the game's Steam library. Enter paths manually for other libraries or local MODs. Supported catalogs: Chains of Industry (3723966801), Real Resources (3459869359), and More Unique Companies (3032185644) with its Chinese translation (3086429193). Paths are saved locally.
+
+MOD updates replace current bilingual catalogs without creating snapshots or changing vanilla archives. Failed MOD builds preserve existing MOD catalogs. Combined updates save vanilla first and MODs second; a MOD failure does not undo a completed vanilla update. MOD-only updates require the vanilla catalog to match the installed game version.

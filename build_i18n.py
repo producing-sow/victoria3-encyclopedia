@@ -1,7 +1,7 @@
 """Build offline English data and a UI dictionary; game terms use official English localization."""
 import ast,concurrent.futures,json,pathlib,re,time,urllib.parse,urllib.request,sys
 HERE=pathlib.Path(__file__).resolve().parent
-ROOT=pathlib.Path(r'F:\Program Files (x86)\Steam\steamapps\common\Victoria 3')
+ROOT=pathlib.Path(sys.argv[1] if len(sys.argv)>1 and not sys.argv[1].startswith('--') else r'F:\Program Files (x86)\Steam\steamapps\common\Victoria 3')
 OUT=HERE/'en';OUT.mkdir(exist_ok=True)
 HAN=re.compile(r'[\u3400-\u9fff]')
 cache_path=HERE/'i18n-ui.json'
@@ -49,7 +49,7 @@ def translate(value):
 
 def convert(value,context=None):
  if isinstance(value,list):return [convert(v) for v in value]
- if not isinstance(value,dict):return value if context in ['kind','searchNames'] else translate(value)
+ if not isinstance(value,dict):return value if context in ['kind','searchNames','key'] else translate(value)
  out={k:convert(v,k) for k,v in value.items()}
  identity=value.get('id') or context
  if 'name' in value and identity in english_keys:out['name']=english_keys[identity]
@@ -110,7 +110,7 @@ for file,(prefix,obj) in raw.items():
  def inspect(v):
   if isinstance(v,dict):
    for k,x in v.items():
-    if k not in ['searchNames','kind']:inspect(x)
+    if k not in ['searchNames','kind','key']:inspect(x)
   elif isinstance(v,list):
    for x in v:inspect(x)
   elif isinstance(v,str) and HAN.search(v):missing.add(v)

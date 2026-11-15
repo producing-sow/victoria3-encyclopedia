@@ -23,11 +23,11 @@
   if(language!=='en')return;
   const seen=new WeakMap();
   function visit(root){
-   if(root.nodeType===3){if(root.parentElement?.closest('script,style,.language-control'))return;const value=root.nodeValue;if(seen.get(root)===value)return;const next=translate(value);seen.set(root,next);if(next!==value)root.nodeValue=next;return}
+   if(root.nodeType===3){if(root.parentElement?.closest('script,style,.language-control,[translate="no"]'))return;const value=root.nodeValue;if(seen.get(root)===value)return;const next=translate(value);seen.set(root,next);if(next!==value)root.nodeValue=next;return}
    if(root.nodeType!==1&&root!==document)return;
-   if(root.nodeType===1&&root.matches('script,style,.language-control'))return;
+   if(root.nodeType===1&&root.matches('script,style,.language-control,[translate="no"]'))return;
    const elements=root===document?[document.documentElement,...document.querySelectorAll('*')]:[root,...root.querySelectorAll('*')];
-   for(const el of elements){if(el.closest('script,style,.language-control'))continue;
+   for(const el of elements){if(el.closest('script,style,.language-control,[translate="no"]'))continue;
     if(el.tagName==='OPTION'&&!el.hasAttribute('value'))el.setAttribute('value',el.value);
     for(const attr of ['title','placeholder','aria-label','alt'])if(el.hasAttribute(attr)){const value=el.getAttribute(attr),next=translate(value);if(next!==value)el.setAttribute(attr,next)}
     if(el.matches('a[href]')){const value=el.getAttribute('href');if(!value||value.startsWith('#')||/^(?:https?:|mailto:|javascript:)/i.test(value))continue;try{const u=new URL(value,location.href);if(/\.html$/.test(u.pathname)){u.searchParams.set('lang',language);el.setAttribute('href',u.href)}}catch{}}
